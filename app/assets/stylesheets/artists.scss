@@ -1,0 +1,33 @@
+// Place all the styles related to the Artists controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    width: 100%;
+    > li {
+    	display: inline-block;
+    	cursor: pointer;
+    	width: 10%;
+    	background-color: grey;
+    	border: 1px solid darkgrey;	
+    	> a {
+    		text-decoration: none;
+    		color: white;
+    	}
+    }
+    > li#first_link, li#last_link {
+    	background-color: purple;	
+    	border: 1px solid purple;
+    }
+    > li.selected {
+    	> a {
+    		color: purple;
+    	}
+    	border: 1px solid purple;	
+    	background-color: white;
+    	font-weight: bold;		
+    }
+} 

@@ -1,0 +1,5 @@
+<%= form_tag root_path, method: "get" do %>
+	<%= label_tag :top_artist_by_country %>
+	<%= text_field_tag 'country', nil, placeholder: 'Enter country name here...'%>
+	<%= submit_tag "Search", name: nil %>
+<% end %>

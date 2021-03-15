@@ -1,0 +1,64 @@
+You should complete this in Java, .NET, Ruby or Node.js (recent version)
+
+ 
+
+**Instructions -**
+Design and implement a solution to the following task, with the following requirements in mind:
+
+The solution should be clear, concise, efficient and maintainable.
+
+ 
+
+- Provide an abstracted solution that demonstrates an understanding of business logic and presentation separation
+
+- Do not make use of any libraries that are not part of the standard language libraries.
+
+- Try not to use of any pre-existing server frameworks, such as Spring, Play etc.
+
+ 
+
+You are of course free to use whatever resources or references that are available to you, but it is expected that the design/solution will be 100% your own.
+
+ 
+
+Your solution should be in the form of a plain-text file or files, UTF-8 encoded, Unix EOL, accessible through some online revision control and source code management (GitHub, Gitorious, Bitbucket, etc). You should take no more than 24 hours to complete your work. But don't rush it -- no extra marks for getting it done quickly! You should also deploy a demo version of your project, ideally to a free instance on AWS.
+
+Remember: this is an opportunity for you to showcase your skills and knowledge of good programming practices and methodologies. This is a backend test, therefore presentation is not a priority (JS, CSS) but is regarded as a bonus. Documentation is also highly regarded.
+
+**
+
+**
+
+**Task -**
+
+Create a list of the most popular artists on Last.fm by country, using Java and HTML. The user should be able to enter a keyword (country name), which is then used to search Last.fm api. The search results should be paginated and displayed as five results per page, and the user should be able to navigate to other pages (browsable). Each result should be displayed as the name of the band and a thumbnail of the band; clicking on the thumbnail should open a new page which shows the Artist Top Tracks. Keep in mind that your solution should work efficiently, no matter how many results match the keyword.
+
+**
+
+**
+
+**Hint: Extra points for implementation of any of the following:**
+
+   *git flow (nvie)*
+
+   *flexible configuration*
+
+   *unit testing*
+
+   *automation*
+
+**
+
+**
+
+**NOTE: I would also really like to see React.JS or Angular.JS used in the solution to show the ability to pick up the new tech and apply it accordingly.**
+
+**
+
+**
+
+**Functional and code review will follow upon receipt of the final deliverables.**
+
+ 
+
+Also please ensure you provide a live demo version for review. This can easily be facilitated by utilising a free tier EC2 instance on Amazon Web Services (AWS)>

@@ -1,0 +1,17 @@
+<%= render "search" %>
+<% if !@artists.blank? %>
+
+	<h1><%= @country %> Top Artists</h1>
+
+	<table width="100%">
+		<% @artists.each do |artist| %>
+			<tr>
+				<td><%= artist['name'] %></td>
+				<td><%= link_to image_tag(artist['image'].first['#text'], alt: "more info"), artist_path(artist['name']) %></td>
+			</tr>
+		<% end %>
+		<tr>
+			<td colspan="2"><%= pagination_element(@pagination) %></td>
+		</tr>
+	</table>
+<% end %>
