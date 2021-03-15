@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class ArtistsController < ApplicationController
   def show
     @name = params['name']
@@ -19,8 +20,9 @@ class ArtistsController < ApplicationController
   end
 
   protected
+
   def prepare_render(client)
     @pagination = client.pagination
-    flash.now[:error] = client.error if !client.error.blank?
+    flash.now[:error] = client.error unless client.error.blank?
   end
 end
