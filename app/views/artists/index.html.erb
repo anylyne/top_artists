@@ -1,7 +1,7 @@
 <%= render "search" %>
 <% if !@artists.blank? %>
 
-	<h1><%= @country %> Top Artists</h1>
+	<h1><%= show_country(@summary) %> Top Artists</h1>
 
 	<table width="100%">
 		<% @artists.each do |artist| %>
@@ -11,7 +11,7 @@
 			</tr>
 		<% end %>
 		<tr>
-			<td colspan="2"><%= pagination_element(@pagination) %></td>
+			<td colspan="2"><%= pagination_element(@summary) %></td>
 		</tr>
 	</table>
 <% end %>

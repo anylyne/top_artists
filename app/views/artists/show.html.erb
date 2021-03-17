@@ -1,6 +1,6 @@
 <%= render "search" %>
 <% if !@tracks.blank? %>
-	<h1><%= @name %> Top Tracks</h1>
+	<h1><%= show_artist(@summary) %> Top Tracks</h1>
 
 	<table width="100%">
 		<% @tracks.each do |track| %>
@@ -10,7 +10,7 @@
 			</tr>
 		<% end %>
 		<tr>
-			<td colspan="2"><%= pagination_element(@pagination) %></td>
+			<td colspan="2"><%= pagination_element(@summary) %></td>
 		</tr>
 	</table>
 <% end %>
