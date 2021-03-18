@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 module ArtistsHelper
   def show_artist(summary)
     summary['artist'] if summary
@@ -9,54 +7,53 @@ module ArtistsHelper
     summary['country'] if summary
   end
 
-  def pagination_items(pagination)
-    current_page = pagination['page']
-    total_pages = pagination['totalPages']
-
-    if current_page != '1'
-      page_first_index = current_page.to_i - 1
-      second_link =	[page_first_index.to_s, '...']
-      middle_link_1 =	[(page_first_index += 1).to_s, page_first_index.to_s, 'selected']
-    else
-      page_first_index = current_page.to_i
-      second_link = [current_page, current_page, 'selected']
-      middle_link_1 =	[(page_first_index += 1).to_s, page_first_index.to_s]
+  def paginate(summary)
+    element = "<ul id='pagination'>"
+    link_attributes(summary).each do |item|
+      element << li_component(item, summary['country'])
     end
+    element << '</ul>'
+    element.html_safe
+  end
 
-    # build hash containing page, id, item_selected, text, value
+  protected
+
+  # a hash with page, id, item_selected, text, value
+  def link_attributes(summary)
+    first_index, second_link, third_link = initial_link_attributes(summary['page'])
     {
       'first_link' => ['1', '<<'],
       'second_link' => second_link,
-
-      'middle_link_1' => middle_link_1,
-      'middle_link_2' => [(page_first_index += 1).to_s, page_first_index.to_s],
-      'middle_link_3' => [(page_first_index += 1).to_s, page_first_index.to_s],
-
-      'previous_last_link' => [(page_first_index += 1).to_s, '...'],
-      'last_link' => [total_pages, '>>']
+      'first_middle_link' => third_link,
+      'second_middle_link' => [(first_index += 1).to_s, first_index.to_s],
+      'third_middle_link' => [(first_index += 1).to_s, first_index.to_s],
+      'previous_last_link' => [(first_index + 1).to_s, '...'],
+      'last_link' => [summary['totalPages'], '>>']
     }
   end
 
-  def pagination_element(pagination_hash)
-    request_path = request.path
-    request_path << "?country=#{pagination_hash['country']}" if action_name == 'index'
-
-    element = "<ul id='pagination'>"
-    pagination_items(pagination_hash).each do |item|
-      link_page = item[1][0]
-      link_id = item[0]
-      link_selected = item[1][2]
-
-      link_text = item[1][1]
-      link_path = action_name == 'index' ? "#{request_path}&" : "#{link_path}?"
-      link_path << "page=#{link_page}"
-
-      element << "<li id='#{link_id}' class='#{link_selected}'>"
-      element << link_to(link_text, link_path.to_s)
-      element << '</li>'
+  def initial_link_attributes(current_page)
+    first_index = current_page.to_i
+    if current_page != '1'
+      first_index -= 1
+      second_link = [first_index.to_s, '...']
+      third_link = [(first_index += 1).to_s, first_index.to_s, 'selected']
+    else
+      second_link = [current_page, current_page, 'selected']
+      third_link = [(first_index += 1).to_s, first_index.to_s]
     end
-    element << '</ul>'
+    [first_index, second_link, third_link]
+  end
 
-    element.html_safe
+  def li_component(item, country)
+    element = "<li id='#{item[0]}' class='#{item[1][2]}'>"
+    element << link_to(item[1][1], link_path(item[1][0], country))
+    element << '</li>'
+  end
+
+  def link_path(page, country)
+    request_path = "#{request.path}?page=#{page}"
+    request_path += "&country=#{country}" if action_name == 'index'
+    request_path
   end
 end

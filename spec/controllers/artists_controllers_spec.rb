@@ -6,23 +6,19 @@ RSpec.describe ArtistsController, type: :controller do
       get :show, params: { name: 'Rihanna' }
       expect(response).to have_http_status(:ok)
       expect(assigns(:tracks).size).to eq(5)
-      expect(assigns(:summary)).to eq({ "artist"=>"Rihanna", 
-                                           "page"=>"1", 
-                                           "perPage"=>"5", 
-                                           "total"=>"190748", 
-                                           "totalPages"=>"38150"})
+      expect(assigns(:summary)["artist"]).to eq("Rihanna")
+      expect(assigns(:summary)["page"]).to eq("1")
+      expect(assigns(:summary)["perPage"]).to eq("5")
     end
   end
   describe "GET index" do
     it "returns a 200" do
       get :index, params: {country: 'Brazil'}
       expect(response).to have_http_status(:ok)
-      expect(assigns(:artists).size).to eq(5) 
-      expect(assigns(:summary)).to eq( "country"=>"Brazil", 
-                                          "page"=>"1", 
-                                          "perPage"=>"5", 
-                                          "total"=>"1167222", 
-                                          "totalPages"=>"233445")
+      expect(assigns(:artists).size).to eq(5)
+      expect(assigns(:summary)["country"]).to eq("Brazil")
+      expect(assigns(:summary)["page"]).to eq("1")
+      expect(assigns(:summary)["perPage"]).to eq("5")
     end
   end
 end
