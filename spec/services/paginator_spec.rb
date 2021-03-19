@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe Paginator, type: :model do
+RSpec.describe Paginator do
   let(:summary) do
     { 'country' => 'Brazil',
       'page' => '1',

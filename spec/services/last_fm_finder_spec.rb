@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe LastFmFinder, type: :model do
+RSpec.describe LastFmFinder do
   describe '#as_hash' do
     it 'shoud retrieve Brazil\'s top 5 artists' do
       service = LastFmFinder.new
