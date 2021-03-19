@@ -63,7 +63,6 @@ RSpec.describe Paginator do
         'totalPages' => '233602',
         'total' => '1168008' }
     end
-
     it 'shoud receive the summary and a hash with the link_attributes' do
       expect_hash = {
         'first_link' => ['1', '<<'],
