@@ -1,5 +1,9 @@
 # README
 
+Code Assessment Aug/2017 (updated)
+
+# Task
+
 Create a list of the most popular artists on Last.fm by country. 
 
 The user should be able to enter a keyword (country name), which is then used to search Last.fm api. 
